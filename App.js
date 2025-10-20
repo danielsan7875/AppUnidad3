@@ -1,33 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-
-import Hear from './componentes/hear';
+import Loader from './componentes/loader';
 import Nav from './componentes/nav';
-
+import AppNavigator from './routes/AppNavigator';
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-   
     <SafeAreaProvider>
-    <SafeAreaView style={styles.container}>
-
-      <View style={{flex: 1}}>
-
-        <ScrollView>
-
-          <Hear />
-    
-  
-        </ScrollView>
-      </View>
-
-      <Nav />
-
-    </SafeAreaView>
-</SafeAreaProvider>
-
+      {isLoading ? (
+        <Loader onFinish={() => setIsLoading(false)} />
+      ) : (
+        <SafeAreaView style={styles.container}>
+          <NavigationContainer>
+              <View style={{ flex: 1 }}>
+                <AppNavigator />
+              </View>
+              <Nav />  
+            </NavigationContainer>
+        </SafeAreaView>
+      )}
+    </SafeAreaProvider>
   );
 };
 
