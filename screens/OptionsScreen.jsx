@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import Nav from '../componentes/nav';
 
 const OptionsScreen = () => (
+  
     <View style={styles.container}>
+         
           <Image
             source={require('../assets/logo2.png')} // Asegúrate que el logo esté en assets
             style={styles.logo}
@@ -12,6 +15,8 @@ const OptionsScreen = () => (
               <Text style={styles.title}>Estudiante:</Text>
                   <Text style={styles.title}>Daniel Sanchez V-30716541</Text>
                       <Text style={styles.title}>Erick Torrealba V-</Text>
+
+       <Nav />               
      </View>
      
 );
@@ -29,7 +34,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#ffffffff',
   },

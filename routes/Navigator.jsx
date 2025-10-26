@@ -4,7 +4,6 @@ import HomeScreen from '../screens/HomeScreen';
 import AgregarScreen from '../screens/AgregarScreen';
 import OptionsScreen from '../screens/OptionsScreen';
 
-
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => (
