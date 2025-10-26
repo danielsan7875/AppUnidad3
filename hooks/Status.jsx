@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-export default function useToggleStatus() {
+export default function Status() {
   return useCallback((current) => !current, []);
 }
 

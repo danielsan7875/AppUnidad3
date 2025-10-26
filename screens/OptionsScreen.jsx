@@ -11,10 +11,12 @@ const OptionsScreen = () => (
             style={styles.logo}
             resizeMode="contain"
           />
-          <Text style={styles.title}>UniFlow | Unidad 3</Text>
+          <Text style={styles.title}>UniFlow | Unidad 3 | © 2025</Text>
               <Text style={styles.title}>Estudiante:</Text>
                   <Text style={styles.title}>Daniel Sanchez V-30716541</Text>
-                      <Text style={styles.title}>Erick Torrealba V-</Text>
+                      <Text style={styles.title}>Erick Torrealba V-30559878</Text>
+                         <Text style={styles.title}>IN3113</Text>
+                         
 
        <Nav />               
      </View>

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
-import ButtonCustom from './ButtonCustom';
+import Boton from './Boton';
 
-export default function TaskCard({ task, onEdit, onDelete }) {
+export default function CardRegistro({ task, onEdit, onDelete }) {
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{task.title}</Text>
@@ -10,13 +10,13 @@ export default function TaskCard({ task, onEdit, onDelete }) {
       <Text style={styles.status}>Estado: {task.completed ? '♥ Completada' : 'Pendiente'}</Text>
 
       <View style={styles.buttonRow}>
-        <ButtonCustom
+        <Boton
           label="Editar"
           onPress={onEdit}
           bgColor="#1125dbff"
           textColor="#fff"
         />
-        <ButtonCustom
+        <Boton
           label="Eliminar"
           onPress={onDelete}
           bgColor="#e53935"

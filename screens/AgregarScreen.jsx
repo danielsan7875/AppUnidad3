@@ -1,27 +1,22 @@
 import { useState } from 'react';
-import {
-  View,
-  TextInput,
-  Switch,
-  StyleSheet,
-  Modal,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { View, TextInput, Switch, StyleSheet, Modal, Text, TouchableOpacity, } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { addTask, updateTask } from '../store/tasksSlice';
+
+import { addTareas, updateTareas } from '../store/tareas';
+
 import Header from '../componentes/Header';
 import Nav from '../componentes/nav';
-import useToggleStatus from '../hooks/useToggleStatus';
+import Status from '../hooks/Status';
+
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 
 export default function AgregarScreen() {
   const { params } = useRoute();
-  const task = params?.task;
+  const Tareas = params?.Tareas;
   const dispatch = useDispatch();
-  const toggle = useToggleStatus();
+  const toggle = Status();
   const navigation = useNavigation();
 
   const [showModal, setShowModal] = useState(false);
@@ -29,9 +24,9 @@ export default function AgregarScreen() {
 
   const { control, getValues } = useForm({
     defaultValues: {
-      title: task?.title || '',
-      description: task?.description || '',
-      completed: task?.completed || false,
+      title: Tareas?.title || '',
+      description: Tareas?.description || '',
+      completed: Tareas?.completed || false,
     },
   });
 
@@ -46,10 +41,10 @@ export default function AgregarScreen() {
 
     const payload = { title, description, completed };
 
-    if (task) {
-      dispatch(updateTask({ ...task, ...payload }));
+    if (Tareas) {
+      dispatch(updateTareas({ ...Tareas, ...payload }));
     } else {
-      dispatch(addTask(payload));
+      dispatch(addTareas(payload));
     }
 
     setShowModal(true);
@@ -61,10 +56,10 @@ export default function AgregarScreen() {
 
   return (
    <View style={styles.container}>
-      <Header title={task ? 'Editar Tarea' : 'Nueva Tarea'} />
+      <Header title={Tareas ? 'Editar Tarea' : 'Nueva Tarea'} />
 
   <View style={styles.card}>
-    <Text style={styles.label}>Título</Text>
+    <Text style={styles.label}>Título *</Text>
     <Controller
       control={control}
       name="title"
@@ -115,7 +110,7 @@ export default function AgregarScreen() {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalText}>
-              ♥ {task ? 'Tarea actualizada' : 'Tarea agregada'} exitosamente
+              ♥ {Tareas ? 'Tarea actualizada' : 'Tarea agregada'} exitosamente
             </Text>
           </View>
         </View>
@@ -172,7 +167,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     padding: 10,
-    height: 100,
+    height: 250,
     textAlignVertical: 'top',
     backgroundColor: '#fafafa',
     marginBottom: 16,
